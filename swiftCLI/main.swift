@@ -48,3 +48,17 @@ extension String {
         return replacingCharacters(in: startIndex..<endIndex, with: "")
     }
 }
+
+extension FileManager {
+    func isFolder(atPath path: String) -> Bool {
+        var objCBool: ObjCBool = false
+        
+        guard fileExists(atPath: path, isDirectory: &objCBool) else {
+            return false
+        }
+        
+        return objCBool.boolValue
+    }
+}
+
+
